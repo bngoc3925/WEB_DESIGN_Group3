@@ -67,22 +67,24 @@
     listEl.innerHTML = filtered
       .map(
         (d) => `
-        <article class="card-surface dest-tile img-zoom">
-          <img src="${d.image}" alt="${d.name}" loading="lazy">
-          <div class="dest-tile__overlay"></div>
-          <div class="dest-tile__content">
-            <div class="dest-tile__meta">
-              <svg class="icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              ${d.country} · ${d.region} Region
+        <a href="destination-detail.html?id=${d.id}" class="dest-tile-link">
+          <article class="card-surface dest-tile img-zoom">
+            <img src="${d.image}" alt="${d.name}" loading="lazy">
+            <div class="dest-tile__overlay"></div>
+            <div class="dest-tile__content">
+              <div class="dest-tile__meta">
+                <svg class="icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                ${d.country} · ${d.region} Region
+              </div>
+              <h3>${d.name}</h3>
+              <p class="dest-tile__desc">${d.description}</p>
+              <div class="dest-tile__footer">
+                <span class="dest-tile__tag">${d.style}</span>
+                <span class="dest-tile__price">from ${formatPrice(d.price)}</span>
+              </div>
             </div>
-            <h3>${d.name}</h3>
-            <p class="dest-tile__desc">${d.description}</p>
-            <div class="dest-tile__footer">
-              <span class="dest-tile__tag">${d.style}</span>
-              <span class="dest-tile__price">from ${formatPrice(d.price)}</span>
-            </div>
-          </div>
-        </article>`
+          </article>
+        </a>`
       )
       .join("");
   }
